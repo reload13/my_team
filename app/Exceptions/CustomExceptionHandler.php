@@ -15,6 +15,7 @@ class CustomExceptionHandler extends ExceptionHandler
     public function render($request, \Throwable $exception)
     {
         // Handle specific exceptions
+        dd("asd");
         if ($exception instanceof ModelNotFoundException) {
             return response()->json(['error' => 'Model not found'], 404);
         } elseif ($exception instanceof QueryException) {

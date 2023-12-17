@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\FormBuilder;
 use App\Models\Player;
 
 use App\Repositories\DatabaseRepositoryInterface;
@@ -14,20 +15,22 @@ class PlayerCRUDController extends Controller
 {
     protected $repository;
 
-    public function __construct(DatabaseRepositoryInterface $repository)
+    public function __construct(DatabaseRepositoryInterface $repository, FormBuilder $formBuilder)
     {
-        $this->repository = $repository->setModel(new Player()); // Replace with your actual model
+        $this->repository = $repository->setModel(new Player());
+        $this->formBuilder = $formBuilder->setModel(new Player());
+
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return JsonResponse
+//     * @return JsonResponse
      */
     public function index()
     {
         $players = $this->repository->getAll();
-        return response()->json(['players' => $players], 200);
+        return view('CRUD.players.index', ['players' => $players]);
     }
 
     /**
@@ -61,13 +64,32 @@ class PlayerCRUDController extends Controller
         return response()->json(['message' => 'Resource created successfully'], 201);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  UpdatePlayerRequest  $request
-     * @param  int  $id
-     * @return JsonResponse
-     */
+    public function create()
+    {
+
+        $formData = $this->formBuilder->generateFieldsFromModel('players', 'Update','POST');
+
+
+        return view('CRUD.players.create', ['form' => $formData]);
+
+//        return response()->json(['message' => 'Resource updated successfully'], 200);
+    }
+    public function edit($id)
+    {
+        $player = $this->repository->find($id);
+
+        if (!$player) {
+            return response()->json(['error' => 'Resource not found'], 404);
+        }
+
+        $formData = $this->formBuilder->generateFieldsFromModel('players', 'Update','PUT');
+
+
+        return view('CRUD.players.edit', ['data' => $player,'form' => $formData,'id'=>$id]);
+
+//        return response()->json(['message' => 'Resource updated successfully'], 200);
+    }
+
     public function update(UpdatePlayerRequest $request, $id)
     {
         $data = $request->validated();

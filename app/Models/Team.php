@@ -30,3 +30,4 @@ class Team extends Authenticatable
         return $this->hasMany(Game::class, 'away_team_id');
     }
 }
+

@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->id();
             $table->dateTime('date');
-            $table->string('time');
+//            $table->string('time');
             $table->string('location');
             $table->unsignedBigInteger('home_team_id');
             $table->unsignedBigInteger('away_team_id');
             $table->string('score')->nullable();
             $table->timestamps();
-
+            $table->dropForeign('games_home_team_id_foreign');
             $table->foreign('home_team_id')->references('id')->on('teams')->onDelete('cascade');
             $table->foreign('away_team_id')->references('id')->on('teams')->onDelete('cascade');
         });

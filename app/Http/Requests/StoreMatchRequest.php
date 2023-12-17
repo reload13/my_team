@@ -15,7 +15,7 @@ class StoreMatchRequest extends FormRequest
     {
         return [
             'date' => 'required|date',
-            'time' => 'required|string|max:255',
+            'time' => 'string|max:255',
             'location' => 'required|string|max:255',
             'home_team_id' => 'required|exists:teams,id',
             'away_team_id' => 'required|exists:teams,id',
