@@ -1,6 +1,6 @@
 
 
-## Agro Apps Assignment
+## My Team Assignment
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 ## Prerequisites
@@ -11,7 +11,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 ## Getting Started
 
 1. Clone the repository:
-   git clone https://github.com/reload13/AgroApps_Assignment.git
+   git clone git@github.com:reload13/my_team.git
 
 2. Navigate to the project directory:
    
