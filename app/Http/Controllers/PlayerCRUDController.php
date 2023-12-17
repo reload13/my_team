@@ -22,23 +22,14 @@ class PlayerCRUDController extends Controller
 
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-//     * @return JsonResponse
-     */
+
     public function index()
     {
         $players = $this->repository->getAll();
         return view('CRUD.players.index', ['players' => $players]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return JsonResponse
-     */
+
     public function show($id)
     {
         $player = $this->repository->find($id);
@@ -50,12 +41,7 @@ class PlayerCRUDController extends Controller
         return response()->json(['data' => $player], 200);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  StorePlayerRequest  $request
-     * @return JsonResponse
-     */
+
     public function store(StorePlayerRequest $request)
     {
         $data = $request->validated();
@@ -98,13 +84,7 @@ class PlayerCRUDController extends Controller
         return response()->json(['message' => 'Resource updated successfully'], 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  DeletePlayerRequest  $request
-     * @param  int  $id
-     * @return JsonResponse
-     */
+
     public function destroy($id)
     {
 

@@ -21,11 +21,7 @@ class GameCRUDController extends Controller
         $this->formBuilder = $formBuilder->setModel(new Game());
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-//     * @return JsonResponse
-     */
+
     public function index()
     {
         $formData = $this->formBuilder->generateFieldsFromModel('/update-route', 'Update');
