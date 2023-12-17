@@ -59,5 +59,3 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
     ./vendor/bin/sail php artisan db:seed
    
 
-    After seeding the Database an account with email: agro@apps.com and password: 123456, will be available. Of you course new users can be created.
-
